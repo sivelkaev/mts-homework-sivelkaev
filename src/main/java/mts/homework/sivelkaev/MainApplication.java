@@ -3,6 +3,7 @@ package mts.homework.sivelkaev;
 import mts.homework.sivelkaev.animal.predator.species.Wolf;
 import mts.homework.sivelkaev.exception.InvalidAnimalBirthDateException;
 import mts.homework.sivelkaev.exception.InvalidAnimalException;
+import mts.homework.sivelkaev.repository.impl.AnimalRepositoryImpl;
 import mts.homework.sivelkaev.service.impl.CreateAnimalServiceImpl;
 import mts.homework.sivelkaev.service.impl.SearchServiceImpl;
 
@@ -13,8 +14,10 @@ public class MainApplication {
     public static void main(String[] args) {
         CreateAnimalServiceImpl createAnimalServiceImpl = new CreateAnimalServiceImpl();
         SearchServiceImpl searchServiceImpl = new SearchServiceImpl();
+        AnimalRepositoryImpl animalRepositoryImpl = new AnimalRepositoryImpl();
 
-        createAnimalServiceImpl.createAnimalGroup();
+        var animalMap = createAnimalServiceImpl.createAnimalGroup();
+        System.out.println(animalMap);
         System.out.println("\n");
 
         createAnimalServiceImpl.createOtherAnimalGroup();
@@ -50,6 +53,27 @@ public class MainApplication {
         try {
             searchServiceImpl.checkLeapYearAnimal(null);
         } catch (InvalidAnimalException | InvalidAnimalBirthDateException e) {
+            System.err.println("Работа метода завершилась ошибкой: " + e.getMessage());
+        }
+
+        //Метод findLeapYearNames
+        try {
+            System.out.println(animalRepositoryImpl.findLeapYearNames(animalMap.get("Dog")));
+        } catch (InvalidAnimalException | InvalidAnimalBirthDateException e) {
+            System.err.println("Работа метода завершилась ошибкой: " + e.getMessage());
+        }
+
+        //Метод findOlderAnimal
+        try {
+            System.out.println(animalRepositoryImpl.findOlderAnimal(animalMap.get("Dog"), 9999999));
+        } catch (InvalidAnimalException e) {
+            System.err.println("Работа метода завершилась ошибкой: " + e.getMessage());
+        }
+
+        //Метод findLeapYearNames
+        try {
+            System.out.println(animalRepositoryImpl.findDuplicate(animalMap.get("Dog")));
+        } catch (InvalidAnimalException e) {
             System.err.println("Работа метода завершилась ошибкой: " + e.getMessage());
         }
     }
