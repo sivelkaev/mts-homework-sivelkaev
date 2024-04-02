@@ -52,20 +52,16 @@ public class AnimalRepositoryImpl implements AnimalRepository {
     @Override
     public Map<String, Integer> findDuplicate(List<Animal> animalList) {
         Map<String, Integer> duplicatesMap = new HashMap<>();
-        Set<Animal> alreadyDuplicatedAnimal = new HashSet<>();
+        Set<String> alreadyDuplicatedAnimal = new HashSet<>();
 
-        for (int i = 0; i < animalList.size(); i++) {
-            for (int j = 0; j < animalList.size(); j++) {
-                if (i != j
-                        && animalList.get(i).getClass().getSimpleName().equals(animalList.get(j).getClass().getSimpleName())
-                        && animalList.get(i).getName().equals(animalList.get(j).getName())
-                        && alreadyDuplicatedAnimal.add(animalList.get(j))) {
-                    if(duplicatesMap.containsKey(animalList.get(i).getClass().getSimpleName())) {
-                        int count = duplicatesMap.get(animalList.get(i).getClass().getSimpleName());
-                        duplicatesMap.put(animalList.get(i).getClass().getSimpleName(), count + 1);
-                    } else {
-                        duplicatesMap.put(animalList.get(i).getClass().getSimpleName(), 1);
-                    }
+        for(int i = 0; i < animalList.size(); i++) {
+            var animalKey = animalList.get(i).getClass().getSimpleName();
+            if (!alreadyDuplicatedAnimal.add(animalKey)) {
+                if(duplicatesMap.containsKey(animalList.get(i).getClass().getSimpleName())) {
+                    int count = duplicatesMap.get(animalList.get(i).getClass().getSimpleName());
+                    duplicatesMap.put(animalList.get(i).getClass().getSimpleName(), count + 1);
+                } else {
+                    duplicatesMap.put(animalList.get(i).getClass().getSimpleName(), 2);
                 }
             }
         }
