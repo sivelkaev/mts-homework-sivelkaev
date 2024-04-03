@@ -60,6 +60,15 @@ public class MainApplication {
 
             //Метод findLeapYearNames
             System.out.println(animalRepositoryImpl.findDuplicate(animalMap.get("Dog")));
+
+            //Метод findAverageAge
+            System.out.println(animalRepositoryImpl.findAverageAge(animalMap.get("Dog")));
+
+            //Метод findOldAndExpensive
+            System.out.println(animalRepositoryImpl.findOldAndExpensive(animalMap.get("Dog")));
+
+            //Метод findMinConstAnimal
+            System.out.println(animalRepositoryImpl.findMinConstAnimal(animalMap.get("Dog")));
         } catch (InvalidAnimalException | InvalidAnimalBirthDateException e) {
             System.err.println("Работа метода завершилась ошибкой: " + e.getMessage());
         }
