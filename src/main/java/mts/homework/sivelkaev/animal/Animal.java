@@ -12,4 +12,10 @@ public interface Animal {
     String getCharacter();
 
     LocalDate getBirthDate();
+
+    String getSecretInformation();
+
+    void setSecretInformation(String secretInformation);
+
+    void printInfo();
 }
