@@ -1,18 +1,30 @@
 package mts.homework.sivelkaev.repository.impl;
 
-import mts.homework.sivelkaev.animal.Animal;
+import lombok.RequiredArgsConstructor;
+import mts.homework.starter.animal.Animal;
 import mts.homework.sivelkaev.exception.InvalidAnimalBirthDateException;
 import mts.homework.sivelkaev.exception.InvalidAnimalException;
 import mts.homework.sivelkaev.repository.AnimalRepository;
-import mts.homework.sivelkaev.service.impl.SearchServiceImpl;
+import mts.homework.sivelkaev.service.CreateAnimalService;
+import mts.homework.sivelkaev.service.SearchService;
+import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.*;
 import java.util.stream.Collectors;
 
+@Component
+@RequiredArgsConstructor
 public class AnimalRepositoryImpl implements AnimalRepository {
-    SearchServiceImpl searchService = new SearchServiceImpl();
+    private final CreateAnimalService createAnimalService;
+    private final SearchService searchService;
+
+    @PostConstruct
+    public void initService() {
+        createAnimalService.createAnimalGroup();
+    }
 
     @Override
     public Map<String, LocalDate> findLeapYearNames(List<Animal> animalList) throws InvalidAnimalException, InvalidAnimalBirthDateException {
@@ -31,7 +43,7 @@ public class AnimalRepositoryImpl implements AnimalRepository {
 
     @Override
     public Map<Animal, Integer> findOlderAnimal(List<Animal> animalList, Integer age) {
-        Map<Animal, Integer> agesMap = new HashMap<>();
+        Map<Animal, Integer> agesMap;
         Animal oldestAnimal = null;
 
         agesMap = animalList.stream()

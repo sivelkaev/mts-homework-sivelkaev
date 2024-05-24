@@ -1,8 +1,8 @@
 package mts.homework.sivelkaev.service;
 
 import com.google.gson.*;
-import mts.homework.sivelkaev.animal.Animal;
-import mts.homework.sivelkaev.animal.pet.species.Dog;
+import mts.homework.starter.animal.Animal;
+import mts.homework.starter.animal.pet.species.Dog;
 
 import java.io.BufferedReader;
 import java.io.File;

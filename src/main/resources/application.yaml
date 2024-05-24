@@ -1,0 +1,3 @@
+application:
+  animal:
+    possible-names: DogName, CatName, WolfName, SharkName

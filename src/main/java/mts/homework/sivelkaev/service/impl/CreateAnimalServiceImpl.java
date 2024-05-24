@@ -1,7 +1,10 @@
 package mts.homework.sivelkaev.service.impl;
 
-import mts.homework.sivelkaev.animal.Animal;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import mts.homework.starter.animal.Animal;
 import mts.homework.sivelkaev.service.CreateAnimalService;
+import mts.homework.starter.service.AnimalService;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -11,9 +14,13 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
 
+@Slf4j
+@RequiredArgsConstructor
 public class CreateAnimalServiceImpl implements CreateAnimalService {
     private static final String FILE_PATH = "C:\\Users\\gasivelkay\\Documents\\GitHub\\mts-homework-sivelkaev\\src\\main\\resources\\logData.txt";
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+
+    private final AnimalService animalService;
 
     @Override
     public Map<String, List<Animal>> createAnimalGroup() {
@@ -21,7 +28,7 @@ public class CreateAnimalServiceImpl implements CreateAnimalService {
 
         int i = 0;
         do {
-            Animal animal = createAnimal();
+            Animal animal = animalService.createAnimal();
             logAnimal(i, animal);
             animalMap.get(animal.getClass().getSimpleName()).add(animal);
             i++;
@@ -29,18 +36,6 @@ public class CreateAnimalServiceImpl implements CreateAnimalService {
         while (i < 10);
 
         return animalMap;
-    }
-
-    public void createOtherAnimalGroup() {
-        for(int i = 0; i < 10; i++) {
-            createAnimal();
-        }
-    }
-
-    public void createOtherAnimalGroup(int n) {
-        for(int i = 0; i < n; i++) {
-            createAnimal();
-        }
     }
 
     private void logAnimal(int i, Animal animal) {

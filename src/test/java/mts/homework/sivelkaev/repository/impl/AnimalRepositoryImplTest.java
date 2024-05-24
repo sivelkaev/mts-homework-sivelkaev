@@ -1,10 +1,11 @@
 package mts.homework.sivelkaev.repository.impl;
 
-import mts.homework.sivelkaev.animal.Animal;
-import mts.homework.sivelkaev.animal.predator.species.Wolf;
+import mts.homework.starter.animal.Animal;
+import mts.homework.starter.animal.predator.species.Wolf;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDate;
@@ -14,7 +15,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(MockitoExtension.class)
 public class AnimalRepositoryImplTest {
-    AnimalRepositoryImpl animalRepository = new AnimalRepositoryImpl();
+    @InjectMocks
+    private AnimalRepositoryImpl animalRepository;
 
     @Test
     @DisplayName("Самое старое животное - массив старших")
