@@ -1,13 +1,15 @@
 package mts.homework.sivelkaev.service.impl;
 
-import mts.homework.sivelkaev.animal.Animal;
+import mts.homework.starter.animal.Animal;
 import mts.homework.sivelkaev.exception.InvalidAnimalBirthDateException;
 import mts.homework.sivelkaev.exception.InvalidAnimalException;
 import mts.homework.sivelkaev.service.SearchService;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+@Service
 public class SearchServiceImpl implements SearchService {
     public Boolean checkLeapYearAnimal(Animal animal) throws InvalidAnimalException, InvalidAnimalBirthDateException {
         final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");

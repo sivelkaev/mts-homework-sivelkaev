@@ -1,6 +1,6 @@
 package mts.homework.sivelkaev.service;
 
-import mts.homework.sivelkaev.animal.Animal;
+import mts.homework.starter.animal.Animal;
 import mts.homework.sivelkaev.exception.InvalidAnimalBirthDateException;
 
 public interface SearchService {
