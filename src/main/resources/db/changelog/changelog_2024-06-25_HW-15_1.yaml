@@ -1,0 +1,12 @@
+databaseChangeLog:
+  - changeSet:
+      id: HW-15_1
+      author: gsivelkaev
+      labels: 2024.06.25
+      comment: "HW-15 - Создание схемы"
+      preConditions:
+        - onFail: HALT
+      changes:
+        - sql:
+            sql: CREATE SCHEMA IF NOT EXISTS animals AUTHORIZATION sivelkaev;
+      rollback:

@@ -1,0 +1,31 @@
+databaseChangeLog:
+  - changeSet:
+      id: HW-15_2
+      author: gsivelkaev
+      labels: 2024.06.25
+      comment: "HW-15 - Создание таблиц"
+      preConditions:
+        - onFail: HALT
+      changes:
+        - sql:
+            sql: "CREATE TABLE animals.animal_type (
+                    id bigserial PRIMARY KEY,
+                    type varchar(50) NOT NULL
+                  )"
+
+        - sql:
+            sql: "CREATE TABLE animals.animal (
+                    id bigserial PRIMARY KEY,
+                    type_id bigint,
+                    breed varchar(50) NOT NULL,
+                    name varchar(50) NOT NULL,
+                    cost double precision NOT NULL,
+                    character varchar(50) NOT NULL,
+                    birth_date date NOT NULL
+                  )"
+
+        - sql:
+            sql: "ALTER TABLE animals.animal 
+                  ADD FOREIGN KEY (type_id) 
+                  REFERENCES animals.animal_type (id)"
+      rollback:

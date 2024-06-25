@@ -1,3 +1,9 @@
 application:
   animal:
     possible-names: DogName, CatName, WolfName, SharkName
+
+spring:
+  liquibase:
+    change-log: 'classpath:/db/changelog/db.changelog-master.yaml'
+  jpa:
+    open-in-view: false
