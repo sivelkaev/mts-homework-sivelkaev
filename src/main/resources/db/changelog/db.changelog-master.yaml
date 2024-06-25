@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - include:
+      file: changelog_2024-06-25_HW-15_1.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: changelog_2024-06-25_HW-15_2.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: changelog_2024-06-25_HW-15_3.yaml
+      relativeToChangelogFile: true

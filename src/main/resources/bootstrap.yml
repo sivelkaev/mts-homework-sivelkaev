@@ -1,0 +1,10 @@
+spring:
+  cloud:
+    consul:
+      config:
+        format: yaml
+        data-key: application
+        watch:
+          enabled: false
+    vault:
+      fail-fast: true
