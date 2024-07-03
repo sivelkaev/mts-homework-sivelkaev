@@ -1,9 +1,9 @@
 package mts.homework.sivelkaev.model.entity;
 
-import com.sun.istack.NotNull;
+import jakarta.persistence.*;
 import lombok.*;
 
-import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serial;
 import java.io.Serializable;
 

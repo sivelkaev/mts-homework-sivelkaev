@@ -1,10 +1,10 @@
 package mts.homework.sivelkaev.model.entity;
 
-import com.sun.istack.NotNull;
+import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.validator.constraints.Length;
 
-import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;

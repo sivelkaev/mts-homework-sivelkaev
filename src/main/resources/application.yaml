@@ -5,5 +5,8 @@ application:
 spring:
   liquibase:
     change-log: 'classpath:/db/changelog/db.changelog-master.yaml'
+  datasource:
+    username: postgres
+    password: postgres
   jpa:
     open-in-view: false
