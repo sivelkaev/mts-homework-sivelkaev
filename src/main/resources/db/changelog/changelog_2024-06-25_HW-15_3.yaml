@@ -1,0 +1,16 @@
+databaseChangeLog:
+  - changeSet:
+      id: HW-15_3
+      author: gsivelkaev
+      labels: 2024.06.25
+      comment: "HW-15 - Заполнение таблиц"
+      preConditions:
+        - onFail: HALT
+      changes:
+        - sql:
+            sql: "insert into animals.animal_type (type)
+                  values('Dog')"
+        - sql:
+            sql: "insert into animals.animal_type (type)
+                  values('Cat')"
+      rollback:

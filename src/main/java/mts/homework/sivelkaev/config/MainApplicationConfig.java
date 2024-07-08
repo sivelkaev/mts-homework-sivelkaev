@@ -1,7 +1,7 @@
 package mts.homework.sivelkaev.config;
 
-import mts.homework.sivelkaev.service.CreateAnimalService;
-import mts.homework.sivelkaev.service.impl.CreateAnimalServiceImpl;
+import mts.homework.sivelkaev.old.service_old.CreateAnimalService;
+import mts.homework.sivelkaev.old.service_old.impl.CreateAnimalServiceImpl;
 import mts.homework.starter.config.NameProperties;
 import mts.homework.starter.service.AnimalService;
 import org.springframework.context.annotation.*;
